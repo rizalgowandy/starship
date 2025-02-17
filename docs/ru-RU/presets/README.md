@@ -1,536 +1,77 @@
-# Предустановки
+# Пресеты
 
-Ниже приведена коллекция предустановок конфигураций сообщества для Starship. Если вы хотите поделиться своей предустановкой, пожалуйста, [создайте PR](https://github.com/starship/starship/edit/master/docs/presets/README.md), обновляя этот файл! 😊
+Ниже представлена коллекция пресетов для Starship, созданных сообществом. Если у вас есть пресет, которым вы хотите поделиться, пожалуйста, [отправьте PR](https://github.com/starship/starship/edit/master/docs/presets/README.md) для обновления этого файла! 😊
 
-## Символы Шрифта Nerd Font
+Чтобы получить подробную информацию о том, как использовать тот или иной пресет, просто щелкните на его изображение.
 
-Эта предустановка не меняет ничего кроме символов, используемых для каждого модуля. Если эмодзи вам не по душе, это может бросаться вам в глаза!
+## [Nerd Font Symbols](./nerd-font.md)
 
-![Скриншот предустановки Nerd Font Symbols](/presets/nerd-font-symbols.png)
+Этот пресет изменяет символы для каждого модуля на символы Nerd Font.
 
-### Требования
+[![Скриншот пресета Nerd Font Symbols](/presets/img/nerd-font-symbols.png "Нажмите, чтобы просмотреть пресет Nerd Font Symbols")](./nerd-font)
 
-- Установленный и включенный шрифт [Nerd Font](https://www.nerdfonts.com/) вашем терминале (пример использует Fira Code Nerd Font)
+## [No Nerd Fonts](./no-nerd-font.md)
 
-### Конфигурация
+Этот пресет изменяет символы для нескольких модулей таким образом, чтобы в приглашении командной строки нигде не использовались символы Nerd Font.
 
-```toml
-[aws]
-symbol = "  "
+::: tip
 
-[conda]
-symbol = " "
+Этот пресет станет пресетом по умолчанию [в будущем релизе starship](https://github.com/starship/starship/pull/3544).
 
-[dart]
-symbol = " "
+:::
 
-[directory]
-read_only = " "
+[Нажмите, чтобы просмотреть пресет No Nerd Font](./no-nerd-font)
 
-[docker_context]
-symbol = " "
+## [Bracketed Segments](./bracketed-segments.md)
 
-[elixir]
-symbol = " "
+Шаблон изменяет формат всех встроенных модулей для показа их сегментов в скобках вместо использования стандартных в Starship слов ("via", "on", и т. д.).
 
-[elm]
-symbol = " "
+[![Скриншот пресета Bracketed Segments](/presets/img/bracketed-segments.png "Нажмите, чтобы просмотреть пресет Bracketed Segments")](./bracketed-segments)
 
-[git_branch]
-symbol = " "
+## [Plain Text Symbols](./plain-text.md)
 
-[golang]
-symbol = " "
+Этот пресет изменяет символы для каждого модуля на обычный текст. Отлично подходит, если у вас нет возможности использовать Unicode.
 
-[hg_branch]
-symbol = " "
+[![Скриншот пресета Plain Text Symbols](/presets/img/plain-text-symbols.png "Нажмите, чтобы просмотреть пресет Plain Text Symbols")](./plain-text)
 
-[java]
-symbol = " "
+## [No Runtime Versions](./no-runtimes.md)
 
-[julia]
-symbol = " "
+Этот пресет скрывает версии сред выполнения языков программирования. Если вы работаете с контейнерами или виртуализированными средами, то этот пресет для вас!
 
-[memory_usage]
-symbol = " "
+[![Скриншот пресета Hide Runtime Versions](/presets/img/no-runtime-versions.png "Нажмите, чтобы просмотреть пресет No Runtime Versions")](./no-runtimes)
 
-[nim]
-symbol = " "
+## [No Empty Icons](./no-empty-icons.md)
 
-[nix_shell]
-symbol = " "
+Этот пресет не отображает иконки, если набор инструментов не найден.
 
-[package]
-symbol = " "
+[![Скриншот пресета No Empty Icons](/presets/img/no-empty-icons.png "Нажмите, чтобы просмотреть пресет No Runtime Versions")](./no-empty-icons.md)
 
-[perl]
-symbol = " "
+## [Pure Prompt](./pure-preset.md)
 
-[php]
-symbol = " "
+Этот пресет имитирует внешний вид и поведение [Pure](https://github.com/sindresorhus/pure).
 
-[python]
-symbol = " "
+[![Скриншот пресета Pure](/presets/img/pure-preset.png "Нажмите, чтобы просмотреть пресет Pure Prompt")](./pure-preset)
 
-[ruby]
-symbol = " "
+## [Pastel Powerline](./pastel-powerline.md)
 
-[rust]
-symbol = " "
+Эта пресет вдохновлен [M365Princess](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/M365Princess.omp.json). В нем также показано, как работает замена пути в starship.
 
-[scala]
-symbol = " "
+[![Скриншот пресета Pastel Powerline](/presets/img/pastel-powerline.png "Нажмите, чтобы просмотреть пресет Pure Prompt")](./pastel-powerline)
 
-[shlvl]
-symbol = " "
+## [Tokyo Night](./tokyo-night.md)
 
-[swift]
-symbol = "ﯣ "
-```
+Этот пресет вдохновлен [tokyo-night-vscode-theme](https://github.com/enkia/tokyo-night-vscode-theme).
 
-## Bracketed Segments
+[![Скриншот пресета Tokyo Night](/presets/img/tokyo-night.png "Нажмите, чтобы просмотреть пресет Tokyo Night")](./tokyo-night)
 
-This preset changes the format of all the built-in modules to show their segment in brackets instead of using the default Starship wording ("via", "on", etc.).
+## [Gruvbox Rainbow](./gruvbox-rainbow.md)
 
-Before:
+Этот пресет в значительной степени вдохновлен [Pastel Powerline](./pastel-powerline.md) и [Tokyo Night](./tokyo-night.md).
 
-![Screenshot of default Starship configuration](/presets/bracketed-segments-before.png)
+[![Скриншот пресета Gruvbox Rainbow](/presets/img/gruvbox-rainbow.png "Нажмите, чтобы просмотреть пресет Gruvbox Rainbow")](./gruvbox-rainbow)
 
-After:
+## [Jetpack](./jetpack.md)
 
-![Screenshot of Bracketed Segments preset](/presets/bracketed-segments-after.png)
+Это псевдоминималистичный пресет, вдохновленный приглашениями командной оболочки [geometry](https://github.com/geometry-zsh/geometry) и [spaceship](https://github.com/spaceship-prompt/spaceship-prompt).
 
-### Конфигурация
-
-```toml
-[aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
-
-[cmake]
-format = '\[[$symbol($version)]($style)\]'
-
-[cmd_duration]
-format = '\[[⏱ $duration ]($style)\]'
-
-[cobol]
-format = '\[[$symbol($version)]($style)\]'
-
-[conda]
-format = '\[[$symbol$environment]($style)\]'
-
-[crystal]
-format = '\[[$symbol($version)]($style)\]'
-
-[dart]
-format = '\[[$symbol($version)]($style)\]'
-
-[deno]
-format = '\[[$symbol($version)]($style)\]'
-
-[docker_context]
-format = '\[[$symbol$context]($style)\]'
-
-[dotnet]
-format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
-
-[elixir]
-format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
-
-[elm]
-format = '\[[$symbol($version)]($style)\]'
-
-[erlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[gcloud]
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
-
-[git_branch]
-format = '\[[$symbol$branch]($style)\]'
-
-[git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
-
-[golang]
-format = '\[[$symbol($version)]($style)\]'
-
-[helm]
-format = '\[[$symbol($version)]($style)\]'
-
-[hg_branch]
-format = '\[[$symbol$branch]($style)\]'
-
-[java]
-format = '\[[$symbol($version)]($style)\]'
-
-[julia]
-format = '\[[$symbol($version)]($style)\]'
-
-[kotlin]
-format = '\[[$symbol($version)]($style)\]'
-
-[kubernetes]
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
-
-[lua]
-format = '\[[$symbol($version)]($style)\]'
-
-[memory_usage]
-format = '\[$symbol[$ram( | $swap)]($style)\]'
-
-[nim]
-format = '\[[$symbol($version)]($style)\]'
-
-[nix_shell]
-format = '\[[$symbol$state( \($name\))]($style)\]'
-
-[nodejs]
-format = '\[[$symbol($version)]($style)\]'
-
-[ocaml]
-format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
-
-[openstack]
-format = '\[[$symbol$cloud(\($project\))]($style)\]'
-
-[package]
-format = '\[[$symbol$version]($style)\]'
-
-[perl]
-format = '\[[$symbol($version)]($style)\]'
-
-[php]
-format = '\[[$symbol($version)]($style)\]'
-
-[pulumi]
-format = '\[[$symbol$stack]($style)\]'
-
-[purescript]
-format = '\[[$symbol($version)]($style)\]'
-
-[python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-
-[red]
-format = '\[[$symbol($version)]($style)\]'
-
-[ruby]
-format = '\[[$symbol($version)]($style)\]'
-
-[rust]
-format = '\[[$symbol($version)]($style)\]'
-
-[scala]
-format = '\[[$symbol($version)]($style)\]'
-
-[sudo]
-format = '\[[as $symbol]\]
-
-[swift]
-format = '\[[$symbol($version)]($style)\]'
-
-[terraform]
-format = '\[[$symbol$workspace]($style)\]'
-
-[time]
-format = '\[[$time]($style)\]'
-
-[username]
-format = '\[[$user]($style)\]'
-
-[vagrant]
-format = '\[[$symbol($version)]($style)\]'
-
-[vlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[zig]
-format = '\[[$symbol($version)]($style)\]'
-```
-
-## Plain Text Symbols
-
-This preset changes the symbols into plain text. If your terminal/font could not render the NerdFonts/emojis, maybe you could try this preset!
-
-Before (default setting with Fixedsys font):
-
-![Screenshot of default Starship configuration with Fixedsys font](/presets/plain-text-symbols-before.png)
-
-After (Plain Text Symbols):
-
-![Screenshot of Plain Text Symbols preset](/presets/plain-text-symbols-after.png)
-
-### Конфигурация
-
-```toml
-[character]
-success_symbol = "[>](bold green)"
-error_symbol = "[x](bold red)"
-vicmd_symbol = "[<](bold green)"
-
-[git_commit]
-tag_symbol = " tag "
-
-[git_status]
-ahead = ">"
-behind = "<"
-diverged = "<>"
-renamed = "r"
-deleted = "x"
-
-[aws]
-symbol = "aws "
-
-[cobol]
-symbol = "cobol "
-
-[conda]
-symbol = "conda "
-
-[crystal]
-symbol = "cr "
-
-[cmake]
-symbol = "cmake "
-
-[dart]
-symbol = "dart "
-
-[deno]
-symbol = "deno "
-
-[dotnet]
-symbol = ".NET "
-
-[directory]
-read_only = " ro"
-
-[docker_context]
-symbol = "docker "
-
-[elixir]
-symbol = "exs "
-
-[elm]
-symbol = "elm "
-
-[git_branch]
-symbol = "git "
-
-[golang]
-symbol = "go "
-
-[hg_branch]
-symbol = "hg "
-
-[java]
-symbol = "java "
-
-[julia]
-symbol = "jl "
-
-[kotlin]
-symbol = "kt "
-
-[nodejs]
-symbol = "nodejs "
-
-[memory_usage]
-symbol = "memory "
-
-[nim]
-symbol = "nim "
-
-[nix_shell]
-symbol = "nix "
-
-[ocaml]
-symbol = "ml "
-
-[package]
-symbol = "pkg "
-
-[perl]
-symbol = "pl "
-
-[php]
-symbol = "php "
-
-[pulumi]
-symbol = "pulumi "
-
-[purescript]
-symbol = "purs "
-
-[python]
-symbol = "py "
-
-[ruby]
-symbol = "rb "
-
-[rust]
-symbol = "rs "
-
-[scala]
-symbol = "scala "
-
-[sudo]
-symbol = "sudo "
-
-[swift]
-symbol = "swift "
-```
-
-## Hide Runtime Versions
-
-This preset hides the version of language runtimes. If you work in containers or virtualized environments, this one is for you!
-
-![Screenshot of Hide Runtime Versions preset](/presets/hide-runtime-versions.png)
-
-### Конфигурация
-
-```toml
-[cmake]
-format = "via [$symbol]($style)"
-
-[cobol]
-format = "via [$symbol]($style)"
-
-[crystal]
-format = "via [$symbol]($style)"
-
-[dart]
-format = "via [$symbol]($style)"
-
-[deno]
-format = "via [$symbol]($style)"
-
-[dotnet]
-format = "[$symbol(🎯 $tfm )]($style)"
-
-[elixir]
-format = 'via [$symbol]($style)'
-
-[elm]
-format = 'via [$symbol]($style)'
-
-[erlang]
-format = 'via [$symbol]($style)'
-
-[golang]
-format = 'via [$symbol]($style)'
-
-[helm]
-format = 'via [$symbol]($style)'
-
-[julia]
-format = 'via [$symbol]($style)'
-
-[kotlin]
-format = 'via [$symbol]($style)'
-
-[lua]
-format = 'via [$symbol]($style)'
-
-[nim]
-format = 'via [$symbol]($style)'
-
-[nodejs]
-format = 'via [$symbol]($style)'
-
-[ocaml]
-format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
-
-[perl]
-format = 'via [$symbol]($style)'
-
-[php]
-format = 'via [$symbol]($style)'
-
-[pulumi]
-format = 'via [$symbol$stack]($style)'
-
-[purescript]
-format = 'via [$symbol]($style)'
-
-[red]
-format = 'via [$symbol]($style)'
-
-[rlang]
-format = 'via [$symbol]($style)'
-
-[ruby]
-format = 'via [$symbol]($style)'
-
-[rust]
-format = 'via [$symbol]($style)'
-
-[swift]
-format = 'via [$symbol]($style)'
-
-[vagrant]
-format = 'via [$symbol]($style)'
-
-[vlang]
-format = 'via [$symbol]($style)'
-
-[zig]
-format = 'via [$symbol]($style)'
-```
-
-## Pure
-
-This preset emulates the look and behavior of [Pure](https://github.com/sindresorhus/pure).
-
-![Screenshot of Pure preset](/presets/pure-prompt.png)
-
-### Конфигурация
-
-```toml
-format = """
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_state\
-$git_status\
-$cmd_duration\
-$line_break\
-$python\
-$character"""
-
-[directory]
-style = "blue"
-
-[character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vicmd_symbol = "[❮](green)"
-
-[git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
-
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
-
-[python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
-```
+[![Скриншот пресета Jetpack](/presets/img/jetpack.png "Нажмите, чтобы просмотреть пресет Jetpack")](./jetpack)

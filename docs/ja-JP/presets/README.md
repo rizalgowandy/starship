@@ -1,536 +1,77 @@
-# 準備するもの
+# プリセット
 
 以下は、Starship用にコミュニティに提供された構成プリセットのコレクションです。 共有するプリセットがある場合は、このファイルを更新して[PR](https://github.com/starship/starship/edit/master/docs/presets/README.md)を送信してください！ 😊
 
-## Nerd Font Symbols
+プリセットの使い方を確認するには画像をクリックしてください。
 
-このプリセットは、各モジュールに使用されるシンボル以外は何も変更しません。 絵文字が気に食わない場合、これはあなたの目を引くかもしれません！
+## [Nerd Font Symbols](./nerd-font.md)
 
-![Nerd Font Symbolsプリセットのスクリーンショット](/presets/nerd-font-symbols.png)
+このプリセットはそれぞれのモジュールで記号がNerd Fontの記号に変更されます。
 
-### 必要なもの
+[![Nerd Font Symbolsプリセットのスクリーンショット](/presets/img/nerd-font-symbols.png "Nerd Font Symbolsプリセットを表示するにはクリックしてください")](./nerd-font)
 
-- 端末にインストールされ、有効になっている[Nerd Font](https://www.nerdfonts.com/)（例ではFira Code Nerd Fontを使用)
+## [No Nerd Fonts](./no-nerd-font.md)
 
-### 設定
+このプリセットは一部のモジュールで使われるシンボルを変更して、Nerd Font シンボルをどこにも使わないようにします。
 
-```toml
-[aws]
-symbol = "  "
+::: tip
 
-[conda]
-symbol = " "
+このプリセットは [Starship の将来のリリース](https://github.com/starship/starship/pull/3544) でデフォルトのプリセットになります。
 
-[dart]
-symbol = " "
+:::
 
-[directory]
-read_only = " "
+[No Nerd Font プリセットを表示するにはクリックしてください。](./no-nerd-font)
 
-[docker_context]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[git_branch]
-symbol = " "
-
-[golang]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[memory_usage]
-symbol = " "
-
-[nim]
-symbol = " "
-
-[nix_shell]
-symbol = " "
-
-[package]
-symbol = " "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[python]
-symbol = " "
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = " "
-
-[scala]
-symbol = " "
-
-[shlvl]
-symbol = " "
-
-[swift]
-symbol = "ﯣ "
-```
-
-## Bracketed Segments
+## [Bracketed Segments](./bracketed-segments.md)
 
 このプリセットは付属のモジュール全てのフォーマットを変更し、デフォルトのStarshipの表示("via", "on", etc.)から、それぞれの情報を括弧で区分けするように変更します。
 
-変更前:
+[![Bracketed Segmentsプリセットのスクリーンショット](/presets/img/bracketed-segments.png "Bracketed Segmentsプリセットを表示するにはクリックしてください")](./bracketed-segments)
 
-![Starshipのデフォルト設定のスクリーンショット](/presets/bracketed-segments-before.png)
+## [Plain Text Symbols](./plain-text.md)
 
-変更後:
+このプリセットはそれぞれのモジュールで記号をテキストに変更します。 Unicodeにアクセスできない場合に最適です。
 
-![Bracketed Segmentsプリセットのスクリーンショット](/presets/bracketed-segments-after.png)
+[![Plain Text Symbolsプリセットのスクリーンショット](/presets/img/plain-text-symbols.png "Plain Text Symbolsプリセットを表示するにはクリックしてください")](./plain-text)
 
-### 設定
+## [No Runtime Versions](./no-runtimes.md)
 
-```toml
-[aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+このプリセットは言語ランタイムのバージョンを非表示にします。 コンテナまたは仮想環境で作業している場合は、これはあなたのためのものです。
 
-[cmake]
-format = '\[[$symbol($version)]($style)\]'
+[![Hide Runtime Versionsプリセットのスクリーンショット](/presets/img/no-runtime-versions.png "No Runtime Versionsプリセットを表示するにはクリックしてください")](./no-runtimes)
 
-[cmd_duration]
-format = '\[[⏱ $duration ]($style)\]'
+## [No Empty Icons](./no-empty-icons.md)
 
-[cobol]
-format = '\[[$symbol($version)]($style)\]'
+ツールセットが見つからない場合、このプリセットはアイコンを表示しません。
 
-[conda]
-format = '\[[$symbol$environment]($style)\]'
+[![Empty Icons プリセットのスクリーンショット](/presets/img/no-empty-icons.png "No Runtime Versionsプリセットを表示するにはクリックしてください")](./no-empty-icons.md)
 
-[crystal]
-format = '\[[$symbol($version)]($style)\]'
+## [Pure Prompt](./pure-preset.md)
 
-[dart]
-format = '\[[$symbol($version)]($style)\]'
+このプリセットは、[Pure](https://github.com/sindresorhus/pure)の外観と振る舞いをエミュレートします。
 
-[deno]
-format = '\[[$symbol($version)]($style)\]'
+[![Pureプリセットのスクリーンショット](/presets/img/pure-preset.png "Pure Promptプリセットを表示するにはクリックしてください")](./pure-preset)
 
-[docker_context]
-format = '\[[$symbol$context]($style)\]'
+## [Pastel Powerline](./pastel-powerline.md)
 
-[dotnet]
-format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
+このプリセットは[M365Princess](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/M365Princess.omp.json)にインスパイアされています。 また、starshipでパス置換がどのように機能するかを示しています。
 
-[elixir]
-format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
+[![Pastel Powerlineプリセットのスクリーンショット](/presets/img/pastel-powerline.png "Pure Promptプリセットを表示するにはクリックしてください")](./pastel-powerline)
 
-[elm]
-format = '\[[$symbol($version)]($style)\]'
+## [Tokyo Night](./tokyo-night.md)
 
-[erlang]
-format = '\[[$symbol($version)]($style)\]'
+このプリセットは[tokyo-night-vscode-theme](https://github.com/enkia/tokyo-night-vscode-theme)を参考にしています。
 
-[gcloud]
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+[![Tokyo Night プリセットのスクリーンショット](/presets/img/tokyo-night.png "Tokyo Night プリセットを表示するにはクリックしてください")](./tokyo-night)
 
-[git_branch]
-format = '\[[$symbol$branch]($style)\]'
+## [Gruvbox Rainbow](./gruvbox-rainbow.md)
 
-[git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+このプリセットは [Pastel Powerline](./pastel-powerline.md) と [Tokyo Night](./tokyo-night.md) に強くインスパイアされています。
 
-[golang]
-format = '\[[$symbol($version)]($style)\]'
+[![Gruvbox Rainbow プリセットのスクリーンショット](/presets/img/gruvbox-rainbow.png "Gruvbox Rainbow プリセットを表示するにはクリックしてください")](./gruvbox-rainbow)
 
-[helm]
-format = '\[[$symbol($version)]($style)\]'
+## [Jetpack](./jetpack.md)
 
-[hg_branch]
-format = '\[[$symbol$branch]($style)\]'
+[geometry](https://github.com/geometry-zsh/geometry) と [spaceship](https://github.com/spaceship-prompt/spaceship-prompt) のプロンプトにインスパイアされた擬似ミニマリストプリセットです。
 
-[java]
-format = '\[[$symbol($version)]($style)\]'
-
-[julia]
-format = '\[[$symbol($version)]($style)\]'
-
-[kotlin]
-format = '\[[$symbol($version)]($style)\]'
-
-[kubernetes]
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
-
-[lua]
-format = '\[[$symbol($version)]($style)\]'
-
-[memory_usage]
-format = '\[$symbol[$ram( | $swap)]($style)\]'
-
-[nim]
-format = '\[[$symbol($version)]($style)\]'
-
-[nix_shell]
-format = '\[[$symbol$state( \($name\))]($style)\]'
-
-[nodejs]
-format = '\[[$symbol($version)]($style)\]'
-
-[ocaml]
-format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
-
-[openstack]
-format = '\[[$symbol$cloud(\($project\))]($style)\]'
-
-[package]
-format = '\[[$symbol$version]($style)\]'
-
-[perl]
-format = '\[[$symbol($version)]($style)\]'
-
-[php]
-format = '\[[$symbol($version)]($style)\]'
-
-[pulumi]
-format = '\[[$symbol$stack]($style)\]'
-
-[purescript]
-format = '\[[$symbol($version)]($style)\]'
-
-[python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-
-[red]
-format = '\[[$symbol($version)]($style)\]'
-
-[ruby]
-format = '\[[$symbol($version)]($style)\]'
-
-[rust]
-format = '\[[$symbol($version)]($style)\]'
-
-[scala]
-format = '\[[$symbol($version)]($style)\]'
-
-[sudo]
-format = '\[[as $symbol]\]
-
-[swift]
-format = '\[[$symbol($version)]($style)\]'
-
-[terraform]
-format = '\[[$symbol$workspace]($style)\]'
-
-[time]
-format = '\[[$time]($style)\]'
-
-[username]
-format = '\[[$user]($style)\]'
-
-[vagrant]
-format = '\[[$symbol($version)]($style)\]'
-
-[vlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[zig]
-format = '\[[$symbol($version)]($style)\]'
-```
-
-## Plain Text Symbols
-
-このプリセットは記号をプレーンテキストに変更します。 あなたのターミナルのフォントでNerdFontsまたは絵文字が使えない場合は、これを試してみるといいかもしれません！
-
-変更前 (デフォルトの設定でFixedsysフォント):
-
-![Fixedsysフォントを用いたStarshipのデフォルト設定のスクリーンショット](/presets/plain-text-symbols-before.png)
-
-変更後 (プレーンテキストの記号):
-
-![Plain Text Symbolsプリセットのスクリーンショット](/presets/plain-text-symbols-after.png)
-
-### 設定
-
-```toml
-[character]
-success_symbol = "[>](bold green)"
-error_symbol = "[x](bold red)"
-vicmd_symbol = "[<](bold green)"
-
-[git_commit]
-tag_symbol = " tag "
-
-[git_status]
-ahead = ">"
-behind = "<"
-diverged = "<>"
-renamed = "r"
-deleted = "x"
-
-[aws]
-symbol = "aws "
-
-[cobol]
-symbol = "cobol "
-
-[conda]
-symbol = "conda "
-
-[crystal]
-symbol = "cr "
-
-[cmake]
-symbol = "cmake "
-
-[dart]
-symbol = "dart "
-
-[deno]
-symbol = "deno "
-
-[dotnet]
-symbol = ".NET "
-
-[directory]
-read_only = " ro"
-
-[docker_context]
-symbol = "docker "
-
-[elixir]
-symbol = "exs "
-
-[elm]
-symbol = "elm "
-
-[git_branch]
-symbol = "git "
-
-[golang]
-symbol = "go "
-
-[hg_branch]
-symbol = "hg "
-
-[java]
-symbol = "java "
-
-[julia]
-symbol = "jl "
-
-[kotlin]
-symbol = "kt "
-
-[nodejs]
-symbol = "nodejs "
-
-[memory_usage]
-symbol = "memory "
-
-[nim]
-symbol = "nim "
-
-[nix_shell]
-symbol = "nix "
-
-[ocaml]
-symbol = "ml "
-
-[package]
-symbol = "pkg "
-
-[perl]
-symbol = "pl "
-
-[php]
-symbol = "php "
-
-[pulumi]
-symbol = "pulumi "
-
-[purescript]
-symbol = "purs "
-
-[python]
-symbol = "py "
-
-[ruby]
-symbol = "rb "
-
-[rust]
-symbol = "rs "
-
-[scala]
-symbol = "scala "
-
-[sudo]
-symbol = "sudo "
-
-[swift]
-symbol = "swift "
-```
-
-## Hide Runtime Versions
-
-This preset hides the version of language runtimes. If you work in containers or virtualized environments, this one is for you!
-
-![Screenshot of Hide Runtime Versions preset](/presets/hide-runtime-versions.png)
-
-### 設定
-
-```toml
-[cmake]
-format = "via [$symbol]($style)"
-
-[cobol]
-format = "via [$symbol]($style)"
-
-[crystal]
-format = "via [$symbol]($style)"
-
-[dart]
-format = "via [$symbol]($style)"
-
-[deno]
-format = "via [$symbol]($style)"
-
-[dotnet]
-format = "[$symbol(🎯 $tfm )]($style)"
-
-[elixir]
-format = 'via [$symbol]($style)'
-
-[elm]
-format = 'via [$symbol]($style)'
-
-[erlang]
-format = 'via [$symbol]($style)'
-
-[golang]
-format = 'via [$symbol]($style)'
-
-[helm]
-format = 'via [$symbol]($style)'
-
-[julia]
-format = 'via [$symbol]($style)'
-
-[kotlin]
-format = 'via [$symbol]($style)'
-
-[lua]
-format = 'via [$symbol]($style)'
-
-[nim]
-format = 'via [$symbol]($style)'
-
-[nodejs]
-format = 'via [$symbol]($style)'
-
-[ocaml]
-format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
-
-[perl]
-format = 'via [$symbol]($style)'
-
-[php]
-format = 'via [$symbol]($style)'
-
-[pulumi]
-format = 'via [$symbol$stack]($style)'
-
-[purescript]
-format = 'via [$symbol]($style)'
-
-[red]
-format = 'via [$symbol]($style)'
-
-[rlang]
-format = 'via [$symbol]($style)'
-
-[ruby]
-format = 'via [$symbol]($style)'
-
-[rust]
-format = 'via [$symbol]($style)'
-
-[swift]
-format = 'via [$symbol]($style)'
-
-[vagrant]
-format = 'via [$symbol]($style)'
-
-[vlang]
-format = 'via [$symbol]($style)'
-
-[zig]
-format = 'via [$symbol]($style)'
-```
-
-## Pure
-
-This preset emulates the look and behavior of [Pure](https://github.com/sindresorhus/pure).
-
-![Screenshot of Pure preset](/presets/pure-prompt.png)
-
-### 設定
-
-```toml
-format = """
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_state\
-$git_status\
-$cmd_duration\
-$line_break\
-$python\
-$character"""
-
-[directory]
-style = "blue"
-
-[character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vicmd_symbol = "[❮](green)"
-
-[git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
-
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
-
-[python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
-```
+[![Jetpack プリセットのスクリーンショット](/presets/img/jetpack.png "Jetpack プリセットを表示するにはクリックしてください")](./jetpack)

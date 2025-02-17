@@ -1,16 +1,13 @@
 use crate::shadow;
 use crate::utils::{self, exec_cmd};
+use nu_ansi_term::Style;
 
-use directories_next::ProjectDirs;
 use std::fs;
 use std::path::PathBuf;
 use std::time::Duration;
 
-#[cfg(feature = "http")]
-const GIT_IO_BASE_URL: &str = "https://git.io/";
-
 pub fn create() {
-    println!("{}\n", shadow::version().trim());
+    println!("{}\n", shadow::VERSION.trim());
     let os_info = os_info::get();
 
     let environment = Environment {
@@ -21,32 +18,33 @@ pub fn create() {
         starship_config: get_starship_config(),
     };
 
-    let link = make_github_issue_link(environment);
-    let short_link = shorten_link(&link);
+    let issue_body = get_github_issue_body(&environment);
 
-    if open::that(&link).is_ok() {
-        println!("Take a look at your browser. A GitHub issue has been populated with your configuration.");
-        println!("If your browser has failed to open, please click this link:\n");
+    println!(
+        "{}\n{issue_body}\n\n",
+        Style::new().bold().paint("Generated bug report:")
+    );
+    println!("Forward the pre-filled report above to GitHub in your browser?");
+    println!("{} To avoid any sensitive data from being exposed, please review the included information before proceeding. Data forwarded to GitHub is subject to GitHub's privacy policy.", Style::new().bold().paint("Warning:"));
+    println!(
+        "Enter `{}` to accept, or anything else to decline, and `{}` to confirm your choice:\n",
+        Style::new().bold().paint("y"),
+        Style::new().bold().paint("Enter key")
+    );
+
+    let mut input = String::new();
+    let _ = std::io::stdin().read_line(&mut input);
+
+    if input.trim().to_lowercase() == "y" {
+        let link = make_github_issue_link(&issue_body);
+        if let Err(e) = open::that(&link) {
+            println!("Failed to open issue report in your browser: {e}");
+            println!("Please copy the above report and open an issue manually, or try opening the following link:\n{link}");
+        }
     } else {
-        println!("Click this link to create a GitHub issue populated with your configuration:\n");
+        println!("Will not open an issue in your browser! Please copy the above report and open an issue manually.");
     }
-
-    println!(" {}", short_link.unwrap_or(link));
-}
-
-#[cfg(feature = "http")]
-fn shorten_link(link: &str) -> Option<String> {
-    attohttpc::post(&format!("{}{}", GIT_IO_BASE_URL, "create"))
-        .form(&[("url", link)])
-        .ok()
-        .and_then(|r| r.send().ok())
-        .and_then(|r| r.text().ok())
-        .map(|slug| format!("{}{}", GIT_IO_BASE_URL, slug))
-}
-
-#[cfg(not(feature = "http"))]
-fn shorten_link(_url: &str) -> Option<String> {
-    None
+    println!("Thanks for using the Starship bug report tool!");
 }
 
 const UNKNOWN_SHELL: &str = "<unknown shell>";
@@ -64,14 +62,24 @@ struct Environment {
 }
 
 fn get_pkg_branch_tag() -> &'static str {
+    #[allow(clippy::const_is_empty)]
     if !shadow::TAG.is_empty() {
         return shadow::TAG;
     }
     shadow::BRANCH
 }
 
-fn make_github_issue_link(environment: Environment) -> String {
-    let body = urlencoding::encode(&format!("#### Current Behavior
+fn get_github_issue_body(environment: &Environment) -> String {
+    let shell_syntax = match environment.shell_info.name.as_ref() {
+        "powershell" | "pwsh" => "pwsh",
+        "fish" => "fish",
+        "cmd" => "lua",
+        // GitHub does not seem to support elvish syntax highlighting.
+        "elvish" => "bash",
+        _ => "bash",
+    };
+
+    format!("#### Current Behavior
 <!-- A clear and concise description of the behavior. -->
 
 #### Expected Behavior
@@ -95,7 +103,7 @@ fn make_github_issue_link(environment: Environment) -> String {
 - Build Time: {build_time}
 #### Relevant Shell Configuration
 
-```bash
+```{shell_syntax}
 {shell_config}
 ```
 
@@ -119,13 +127,17 @@ fn make_github_issue_link(environment: Environment) -> String {
         rust_channel =  shadow::RUST_CHANNEL,
         build_rust_channel =  shadow::BUILD_RUST_CHANNEL,
         build_time =  shadow::BUILD_TIME,
-    ))
-        .replace("%20", "+");
+        shell_syntax = shell_syntax,
+    )
+}
+
+fn make_github_issue_link(body: &str) -> String {
+    let escaped = urlencoding::encode(body).replace("%20", "+");
 
     format!(
         "https://github.com/starship/starship/issues/new?template={}&body={}",
         urlencoding::encode("Bug_report.md"),
-        body
+        escaped
     )
     .chars()
     .take(GITHUB_CHAR_LIMIT)
@@ -151,10 +163,7 @@ fn get_shell_info() -> ShellInfo {
 
     let shell = shell.unwrap();
 
-    let version = exec_cmd(&shell, &["--version"], Duration::from_millis(500)).map_or_else(
-        || UNKNOWN_VERSION.to_string(),
-        |output| output.stdout.trim().to_string(),
-    );
+    let version = get_shell_version(&shell);
 
     let config = get_config_path(&shell)
         .and_then(|config_path| fs::read_to_string(config_path).ok())
@@ -193,8 +202,7 @@ fn get_terminal_info() -> TerminalInfo {
 
 fn get_config_path(shell: &str) -> Option<PathBuf> {
     if shell == "nu" {
-        return ProjectDirs::from("org", "nushell", "nu")
-            .map(|project_dirs| project_dirs.config_dir().join("config.toml"));
+        return dirs::config_dir().map(|config_dir| config_dir.join("nushell").join("config.nu"));
     }
 
     utils::home_dir().and_then(|home_dir| {
@@ -202,7 +210,7 @@ fn get_config_path(shell: &str) -> Option<PathBuf> {
             "bash" => Some(".bashrc"),
             "fish" => Some(".config/fish/config.fish"),
             "ion" => Some(".config/ion/initrc"),
-            "powershell" => {
+            "powershell" | "pwsh" => {
                 if cfg!(windows) {
                     Some("Documents/PowerShell/Microsoft.PowerShell_profile.ps1")
                 } else {
@@ -213,6 +221,7 @@ fn get_config_path(shell: &str) -> Option<PathBuf> {
             "elvish" => Some(".elvish/rc.elv"),
             "tcsh" => Some(".tcshrc"),
             "xonsh" => Some(".xonshrc"),
+            "cmd" => Some("AppData/Local/clink/starship.lua"),
             _ => None,
         }
         .map(|path| home_dir.join(path))
@@ -231,6 +240,22 @@ fn get_starship_config() -> String {
         })
         .and_then(|config_path| fs::read_to_string(config_path).ok())
         .unwrap_or_else(|| UNKNOWN_CONFIG.to_string())
+}
+
+fn get_shell_version(shell: &str) -> String {
+    let time_limit = Duration::from_millis(500);
+    match shell {
+        "powershell" => exec_cmd(
+            shell,
+            &["(Get-Host | Select Version | Format-Table -HideTableHeaders | Out-String).trim()"],
+            time_limit,
+        ),
+        _ => exec_cmd(shell, &["--version"], time_limit),
+    }
+    .map_or_else(
+        || UNKNOWN_VERSION.to_string(),
+        |output| output.stdout.trim().to_string(),
+    )
 }
 
 #[cfg(test)]
@@ -255,7 +280,8 @@ mod tests {
             starship_config: "No Starship config".to_string(),
         };
 
-        let link = make_github_issue_link(environment);
+        let body = get_github_issue_body(&environment);
+        let link = make_github_issue_link(&body);
 
         assert!(link.contains(clap::crate_version!()));
         assert!(link.contains("Linux"));

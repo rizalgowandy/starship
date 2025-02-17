@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/starship/starship/actions"
     ><img
-      src="https://img.shields.io/github/workflow/status/starship/starship/Main workflow/master?label=workflow&style=flat-square"
+      src="https://img.shields.io/github/actions/workflow/status/starship/starship/workflow.yml?branch=master&label=workflow&style=flat-square"
       alt="Trạng thái GitHub Actions workflow"
  /></a>
   <a href="https://crates.io/crates/starship"
@@ -31,6 +31,11 @@
     ><img
       src="https://img.shields.io/badge/twitter-@StarshipPrompt-1DA1F3?style=flat-square"
       alt="Theo dõi @StarshipPrompt trên Twitter"
+ /></a>
+  <a href="https://stand-with-ukraine.pp.ua"
+    ><img
+      src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraineFlat.svg"
+      alt="Stand With Ukraine"
  /></a>
 </p>
 
@@ -75,6 +80,22 @@
  /></a>
   &nbsp;
   <a
+    href="https://github.com/starship/starship/blob/master/docs/id-ID/guide/README.md"
+    ><img
+      height="20"
+      src="https://raw.githubusercontent.com/starship/starship/master/media/flag-id.png"
+      alt="Bahasa Indonesia"
+ /></a>
+  &nbsp;
+  <a
+    href="https://github.com/starship/starship/blob/master/docs/it-IT/guide/README.md"
+    ><img
+      height="20"
+      src="https://raw.githubusercontent.com/starship/starship/master/media/flag-it.png"
+      alt="Italiano"
+ /></a>
+  &nbsp;
+  <a
     href="https://github.com/starship/starship/blob/master/docs/ja-JP/guide/README.md"
     ><img
       height="20"
@@ -96,6 +117,14 @@
       height="20"
       src="https://raw.githubusercontent.com/starship/starship/master/media/flag-ru.png"
       alt="Tiếng Nga"
+ /></a>
+  &nbsp;
+  <a
+    href="https://github.com/starship/starship/blob/master/docs/uk-UA/guide/README.md"
+    ><img
+      height="20"
+      src="https://raw.githubusercontent.com/starship/starship/master/media/flag-ua.png"
+      alt="Українська"
  /></a>
   &nbsp;
   <a
@@ -151,150 +180,228 @@
 
 ### Yêu cầu
 
-- Đã cài đặt [Nerd Font](https://www.nerdfonts.com/) và đã kích hoạt trong giao diện dòng lệnh của bạn (ví dụ, thử [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads)).
+- Bạn phải có [Nerd Font](https://www.nerdfonts.com/) được cài đặt và kích hoạt trên terminal (ví dụ, bạn có thể thử [FiraCode NerdFont](https://www.nerdfonts.com/font-downloads)).
 
-### Bắt đầu
+### Bước 1. Cài Đặt Starship
 
-**Lưu ý**: do sự gia tăng của các nền tảng khác nhau, chỉ một tập con các nền tảng hỗ trợ được hiển thị bên dưới. Không thể tìm thấy nền tảng phù hợp của bạn? Hãy xem một [hướng dẫn bổ sung cho các nền tảng khác](https://starship.rs/installing/).
+Chọn hệ điều hành của bạn trong danh sách bên dưới để xem hướng dẫn cài đặt:
 
-1. Cài đặt **starship** nhị phân:
+<details>
+<summary>Android</summary>
 
+Cài đặt Starship bằng một package manager bất kì:
 
-   #### Cài đặt phiên bản cuối cùng
+| Kho lưu trữ                                                                       | Hướng dẫn              |
+| --------------------------------------------------------------------------------- | ---------------------- |
+| [Termux](https://github.com/termux/termux-packages/tree/master/packages/starship) | `pkg install starship` |
 
+</details>
 
-   ##### Từ bản nhị phân có sẵn, với Shell:
+<details>
+<summary>BSD</summary>
 
-   ```sh
-   sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-   ```
+Cài đặt Starship bằng một package manager bất kì:
 
-   Để cập nhật chính Starship, hãy chạy lại đoạn script bên trên. Nó sẽ thay thế phiên bản hiện tại mà không hề thay đổi gì những cài đặt của Starship trước đó.
+| Bản phân phối | Kho lưu trữ                                              | Hướng dẫn                         |
+| ------------- | -------------------------------------------------------- | --------------------------------- |
+| **_Bất kỳ_**  | **[crates.io](https://crates.io/crates/starship)**       | `cargo install starship --locked` |
+| FreeBSD       | [FreshPorts](https://www.freshports.org/shells/starship) | `pkg install starship`            |
+| NetBSD        | [pkgsrc](https://pkgsrc.se/shells/starship)              | `pkgin install starship`          |
 
-   **Ghi chú** - Script cài đặt mặc định có thể bị ghi đè.
+</details>
 
-   ```sh
-   sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --help
-   ```
+<details>
+<summary>Linux</summary>
 
+Cài đặt phiên bản mới nhất cho hệ điều hành của bạn:
 
-   #### Cài đặt thông qua Trình quản lí gói
+```sh
+curl -sS https://starship.rs/install.sh | sh
+```
 
+Hoặc là, cài đặt Starship bằng một package manager bất kì:
 
-   ##### Với [Homebrew](https://brew.sh/):
+| Bản phân phối      | Kho lưu trữ                                                                                     | Hướng dẫn                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **_Bất kỳ_**       | **[crates.io](https://crates.io/crates/starship)**                                              | `cargo install starship --locked`                                              |
+| _Bất kỳ_           | [conda-forge](https://anaconda.org/conda-forge/starship)                                        | `conda install -c conda-forge starship`                                        |
+| _Bất kỳ_           | [Linuxbrew](https://formulae.brew.sh/formula/starship)                                          | `brew install starship`                                                        |
+| Alpine Linux 3.13+ | [Alpine Linux Packages](https://pkgs.alpinelinux.org/packages?name=starship)                    | `apk add starship`                                                             |
+| Arch Linux         | [Arch Linux Extra](https://archlinux.org/packages/extra/x86_64/starship)                        | `pacman -S starship`                                                           |
+| CentOS 7+          | [Copr](https://copr.fedorainfracloud.org/coprs/atim/starship)                                   | `dnf copr enable atim/starship` <br /> `dnf install starship` |
+| Gentoo             | [Gentoo Packages](https://packages.gentoo.org/packages/app-shells/starship)                     | `emerge app-shells/starship`                                                   |
+| Manjaro            |                                                                                                 | `pacman -S starship`                                                           |
+| NixOS              | [nixpkgs](https://github.com/NixOS/nixpkgs/blob/master/pkgs/tools/misc/starship/default.nix)    | `nix-env -iA nixpkgs.starship`                                                 |
+| openSUSE           | [OSS](https://software.opensuse.org/package/starship)                                           | `zypper in starship`                                                           |
+| Void Linux         | [Void Linux Packages](https://github.com/void-linux/void-packages/tree/master/srcpkgs/starship) | `xbps-install -S starship`                                                     |
 
-   ```sh
-   brew install starship
-   ```
+</details>
 
+<details>
+<summary>macOS</summary>
 
-   ##### Với [Scoop](https://scoop.sh):
+Cài đặt phiên bản mới nhất cho hệ điều hành của bạn:
 
-   ```powershell
-   scoop install starship
-   ```
+```sh
+curl -sS https://starship.rs/install.sh | sh
+```
 
-2. Thêm đoạn mã khởi tạo vào tệp tin cấu hình shell của bạn:
+Hoặc là, cài đặt Starship bằng một package manager bất kì:
 
+| Kho lưu trữ                                              | Hướng dẫn                               |
+| -------------------------------------------------------- | --------------------------------------- |
+| **[crates.io](https://crates.io/crates/starship)**       | `cargo install starship --locked`       |
+| [conda-forge](https://anaconda.org/conda-forge/starship) | `conda install -c conda-forge starship` |
+| [Homebrew](https://formulae.brew.sh/formula/starship)    | `brew install starship`                 |
+| [MacPorts](https://ports.macports.org/port/starship)     | `port install starship`                 |
 
-   #### Bash
+</details>
 
-   Thêm đoạn sau vào cuối tệp tin `~/.bashrc`:
+<details>
+<summary>Windows</summary>
 
-   ```sh
-   # ~/.bashrc
+Cài đặt phiên bản mới nhất cho hệ điều hành của bạn với MSI-installers từ [phần release](https://github.com/starship/starship/releases/latest).
 
-   eval "$(starship init bash)"
-   ```
+Cài đặt Starship bằng một package manager bất kì:
 
+| Kho lưu trữ                                                                                  | Hướng dẫn                               |
+| -------------------------------------------------------------------------------------------- | --------------------------------------- |
+| **[crates.io](https://crates.io/crates/starship)**                                           | `cargo install starship --locked`       |
+| [Chocolatey](https://community.chocolatey.org/packages/starship)                             | `choco install starship`                |
+| [conda-forge](https://anaconda.org/conda-forge/starship)                                     | `conda install -c conda-forge starship` |
+| [Scoop](https://github.com/ScoopInstaller/Main/blob/master/bucket/starship.json)             | `scoop install starship`                |
+| [winget](https://github.com/microsoft/winget-pkgs/tree/master/manifests/s/Starship/Starship) | `winget install --id Starship.Starship` |
 
-   #### Fish
+</details>
 
-   Thêm đoạn sau vào cuối tệp tin `~/.config/fish/config.fish`:
+### Bước 2. Thiết lập shell của bạn để dùng Starship
 
-   ```sh
-   # ~/.config/fish/config.fish
+Cấu hình shell của bạn để chạy starship. Bạn có thể chọn từ danh sách bên dưới:
 
-   starship init fish | source
-   ```
+<details>
+<summary>Bash</summary>
 
+Thêm đoạn sau vào cuối tệp tin `~/.bashrc`:
 
-   #### Zsh
+```sh
+eval "$(starship init bash)"
+```
 
-   Thêm đoạn sau vào cuối tệp tin `~/.zshrc`:
+</details>
 
-   ```sh
-   # ~/.zshrc
+<details>
+<summary>Cmd</summary>
 
-   eval "$(starship init zsh)"
-   ```
+Bạn cần phải dùng [Clink](https://chrisant996.github.io/clink/clink.html) (v1.2.30+) với Cmd. Tạo một file như đường dẫn `%LocalAppData%/clink/starship.lua` với nội dung như sau:
 
+```lua
+load(io.popen('starship init cmd'):read("*a"))()
+```
 
-   #### PowerShell
+</details>
 
-   Thêm đoạn sau vào cuối tệp tin `Microsoft.PowerShell_profile.ps1`. Bạn có thể kiểm tra vị trí tệp tin này bằng việc truy xuất biến `$PROFILE` trong PowerShell. Thông thường, đường dẫn là `~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1` hoặc `~/.config/powershell/Microsoft.PowerShell_profile.ps1` trên -Nix.
+<details>
+<summary>Elvish</summary>
 
-   ```powershell
-   Invoke-Expression (&starship init powershell)
-   ```
+Thêm đoạn sau vào cuối tệp tin `~/.elvish/rc.elv`:
 
+```sh
+eval (starship init elvish)
+```
 
-   #### Ion
+Lưu ý: Chỉ hỗ trợ Elvish v0.18+
 
-   Thêm đoạn sau vào cuối tệp tin `~/.config/ion/initrc`:
+</details>
 
-   ```sh
-   # ~/.config/ion/initrc
+<details>
+<summary>Fish</summary>
 
-   eval $(starship init ion)
-   ```
+Thêm đoạn sau vào cuối tệp tin `~/.config/fish/config.fish`:
 
+```fish
+starship init fish | source
+```
 
-   #### Elvish
+</details>
 
-   **Cảnh báo** Chỉ elvish v0.15 hoặc cao hơn được hỗ trợ. Thêm đoạn sau vào cuối tệp tin `~/.elvish/rc.elv`:
+<details>
+<summary>Ion</summary>
 
-   ```sh
-   # ~/.elvish/rc.elv
+Thêm đoạn sau vào cuối tệp tin `~/.config/ion/initrc`:
 
-   eval (starship init elvish)
-   ```
+```sh
+eval $(starship init ion)
+```
 
+</details>
 
-   #### Tcsh
+<details>
+<summary>Nushell</summary>
 
-   Thêm đoạn sau vào cuối tệp tin `~/.tcshrc`:
+Add the following to the end of your Nushell configuration (find it by running `$nu.config-path` in Nushell):
 
-   ```sh
-   # ~/.tcshrc
+```sh
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+```
 
-   eval `starship init tcsh`
-   ```
+Note: Only Nushell v0.96+ is supported
 
+</details>
 
-   #### Xonsh
+<details>
+<summary>PowerShell</summary>
 
-   Thêm dòng này vào cuối của file `~/.xonshrc`:
+Thêm đoạn code sau vào cuối file cấu hình PowerShell (bạn có thể tìm đường dẫn tới file cấu hình PowerShell bằng cách chạy câu lệnh `$PROFILE`):
 
-   ```sh
-   # ~/.xonshrc
+```powershell
+Invoke-Expression (&starship init powershell)
+```
 
-   execx($(starship init xonsh))
-   ```
+</details>
 
+<details>
+<summary>Tcsh</summary>
 
-   #### Nushell
+Thêm đoạn sau vào cuối tệp tin `~/.tcshrc`:
 
-   **Cảnh báo ** Cái này có thể bị thay đổi trong tương lai. Chỉ có nu phiên bản v. 033 hoặc cao hơn được hỗ trợ. Thêm dòng sau vào file cấu hình nu. Bạn có thể kiểm tra vị trí của cái file này bằng cách chạy `đường dẫn cấu hình` trong nu.
+```sh
+eval `starship init tcsh`
+```
 
-   ```toml
-   startup = [
-    "mkdir ~/.cache/starship",
-    "starship init nu | save ~/.cache/starship/init.nu",
-    "source ~/.cache/starship/init.nu"
-   ]
-   prompt = "starship_prompt"
-   ```
+</details>
+
+<details>
+<summary>Xonsh</summary>
+
+Thêm dòng này vào cuối của file `~/.xonshrc`:
+
+```python
+execx($(starship init xonsh))
+```
+
+</details>
+
+<details>
+<summary>Zsh</summary>
+
+Thêm đoạn sau vào cuối tệp tin `~/.zshrc`:
+
+```sh
+eval "$(starship init zsh)"
+```
+
+</details>
+
+### Bước 3. Cấu hình Starship
+
+Khởi tạo một shell mới, và bạn sẽ thấy một chiếc shell mới tinh, đẹp lung linh. Nếu bạn hài lòng với cấu hình mặc định thì giờ là lúc mà bạn nên tận hưởng chiếc shell mới của mình!
+
+Nếu bạn muốn tùy chỉnh Starship nhiều hơn nữa:
+
+- **[Cấu hình](https://starship.rs/config/)** – học cách cấu hình Starship để tùy chỉnh prompt theo ý bạn
+
+- **[Cấu hình mẫu](https://starship.rs/presets/)** – lấy cảm hứng từ cấu hình của những người khác
 
 ## 🤝 Đóng góp
 
@@ -308,11 +415,26 @@ Nếu bạn thích thú trong việc giúp đỡ đóng góp cho starship, xin h
 
 Xin hãy xem qua những công việc này trước đây, những thứ đã giúp truyền cảm hứng để tạo ra starship. 🙏
 
-- **[denysdovhan/spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)** - A ZSH prompt cho những phi hành gia.
+- **[denysdovhan/spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)** – A ZSH prompt for astronauts.
 
-- **[denysdovhan/robbyrussell-node](https://github.com/denysdovhan/robbyrussell-node)** - Cross-shell robbyrussell theme được viết bằng JavaScript.
+- **[denysdovhan/robbyrussell-node](https://github.com/denysdovhan/robbyrussell-node)** – Cross-shell robbyrussell theme written in JavaScript.
 
-- **[reujab/silver](https://github.com/reujab/silver)** - A cross-shell có khả năng tuỳ biến giống powerline prompt với các icon.
+- **[reujab/silver](https://github.com/reujab/silver)** – A cross-shell customizable powerline-like prompt with icons.
+
+## Tài trợ
+
+Hỗ trợ project này bằng việc [trở thành nhà tài trợ](https://github.com/sponsors/starship). Tên hoặc logo của nhà tài trợ sẽ được hiển thị với một liên kết dẫn tới trang web của họ.
+
+## 🔒 Code Signing Policy
+
+Free code signing provided by [SignPath.io](https://signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+
+Code Signing Roles:
+
+- Reviewers: [Astronauts](https://github.com/orgs/starship/teams/astronauts)
+- Approvers and Authors: [Mission Control](https://github.com/orgs/starship/teams/mission-control)
+
+This program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it.
 
 <p align="center">
     <br>

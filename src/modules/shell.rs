@@ -1,4 +1,4 @@
-use super::{Context, Module, RootModuleConfig, Shell};
+use super::{Context, Module, ModuleConfig, Shell};
 
 use crate::configs::shell::ShellConfig;
 use crate::formatter::StringFormatter;
@@ -11,7 +11,7 @@ pub fn module<'a>(context: &'a Context) -> Option<Module<'a>> {
         return None;
     }
 
-    let shell = context.shell;
+    let shell = &context.shell;
 
     let parsed = StringFormatter::new(config.format).and_then(|formatter| {
         formatter
@@ -20,12 +20,14 @@ pub fn module<'a>(context: &'a Context) -> Option<Module<'a>> {
                     Shell::Bash => Some(config.bash_indicator),
                     Shell::Fish => Some(config.fish_indicator),
                     Shell::Zsh => Some(config.zsh_indicator),
+                    Shell::Pwsh => config.pwsh_indicator.or(Some(config.powershell_indicator)),
                     Shell::PowerShell => Some(config.powershell_indicator),
                     Shell::Ion => Some(config.ion_indicator),
                     Shell::Elvish => Some(config.elvish_indicator),
                     Shell::Tcsh => Some(config.tcsh_indicator),
                     Shell::Nu => Some(config.nu_indicator),
                     Shell::Xonsh => Some(config.xonsh_indicator),
+                    Shell::Cmd => Some(config.cmd_indicator),
                     Shell::Unknown => Some(config.unknown_indicator),
                 },
                 _ => None,
@@ -39,10 +41,12 @@ pub fn module<'a>(context: &'a Context) -> Option<Module<'a>> {
                 "fish_indicator" => Some(Ok(config.fish_indicator)),
                 "zsh_indicator" => Some(Ok(config.zsh_indicator)),
                 "powershell_indicator" => Some(Ok(config.powershell_indicator)),
+                "pwsh_indicator" => config.pwsh_indicator.map(Ok),
                 "ion_indicator" => Some(Ok(config.ion_indicator)),
                 "elvish_indicator" => Some(Ok(config.elvish_indicator)),
                 "tcsh_indicator" => Some(Ok(config.tcsh_indicator)),
                 "xonsh_indicator" => Some(Ok(config.xonsh_indicator)),
+                "cmd_indicator" => Some(Ok(config.cmd_indicator)),
                 "unknown_indicator" => Some(Ok(config.unknown_indicator)),
                 _ => None,
             })
@@ -64,7 +68,7 @@ pub fn module<'a>(context: &'a Context) -> Option<Module<'a>> {
 mod tests {
     use crate::context::Shell;
     use crate::test::ModuleRenderer;
-    use ansi_term::Color;
+    use nu_ansi_term::Color;
 
     #[test]
     fn test_none_if_disabled() {
@@ -199,6 +203,50 @@ mod tests {
     }
 
     #[test]
+    fn test_pwsh_default_format() {
+        let expected = Some(format!("{} ", Color::White.bold().paint("psh")));
+        let actual = ModuleRenderer::new("shell")
+            .shell(Shell::Pwsh)
+            .config(toml::toml! {
+                [shell]
+                disabled = false
+            })
+            .collect();
+
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn test_pwsh_custom_format() {
+        let expected = Some(format!("{} ", Color::Cyan.bold().paint("pwsh")));
+        let actual = ModuleRenderer::new("shell")
+            .shell(Shell::Pwsh)
+            .config(toml::toml! {
+                [shell]
+                pwsh_indicator = "[pwsh](bold cyan)"
+                disabled = false
+            })
+            .collect();
+
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn test_pwsh_custom_format_fallback() {
+        let expected = Some(format!("{} ", Color::Cyan.bold().paint("pwsh")));
+        let actual = ModuleRenderer::new("shell")
+            .shell(Shell::Pwsh)
+            .config(toml::toml! {
+                [shell]
+                powershell_indicator = "[pwsh](bold cyan)"
+                disabled = false
+            })
+            .collect();
+
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
     fn test_ion_default_format() {
         let expected = Some(format!("{} ", Color::White.bold().paint("ion")));
         let actual = ModuleRenderer::new("shell")
@@ -307,6 +355,35 @@ mod tests {
             .config(toml::toml! {
                 [shell]
                 xonsh_indicator = "[xonsh](bold cyan)"
+                disabled = false
+            })
+            .collect();
+
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn test_cmd_default_format() {
+        let expected = Some(format!("{} ", Color::White.bold().paint("cmd")));
+        let actual = ModuleRenderer::new("shell")
+            .shell(Shell::Cmd)
+            .config(toml::toml! {
+                [shell]
+                disabled = false
+            })
+            .collect();
+
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn test_cmd_custom_format() {
+        let expected = Some(format!("{} ", Color::Cyan.bold().paint("cmd")));
+        let actual = ModuleRenderer::new("shell")
+            .shell(Shell::Cmd)
+            .config(toml::toml! {
+                [shell]
+                cmd_indicator = "[cmd](bold cyan)"
                 disabled = false
             })
             .collect();

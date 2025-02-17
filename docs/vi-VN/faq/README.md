@@ -1,4 +1,4 @@
-# CÂU HỎI THƯỜNG GẶP
+# Câu hỏi thường gặp
 
 ## Cấu hình sử dụng trong demo GIF là gì?
 
@@ -53,12 +53,12 @@ Prompt sẽ sử dụng nhiều ngữ cảnh được cung câos, nhưng không 
 Nếu bạn nhận được một lỗi giống như "_version 'GLIBC_2.18' not found (required by starship)_" khi sử dụng prebuilt binary (ví dụ trên CentOS 6 hoặc 7), bạn có thể sử dụng tập tin đã được dịch với `musl` thay vì `glibc`:
 
 ```sh
-sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --platform unknown-linux-musl
+curl -sS https://starship.rs/install.sh | sh -s -- --platform unknown-linux-musl
 ```
 
 ## Why do I see `Executing command "..." timed out.` warnings?
 
-Starship executes different commands to get information to display in the prompt, for example the version of a program or the current git status. To make sure starship doesn't hang while trying to execute these commands we set a time limit, if a command takes longer than this limit starship will stop the execution of the command and output the above warning, this is expected behaviour. This time limit is configurable using the [`command_timeout` key](/config/#prompt) so if you want you can increase the time limit. You can also follow the debugging steps below to see which command is being slow and see if you can optimise it. Finally you can set the `STARSHIP_LOG` env var to `error` to hide these warnings.
+Starship executes different commands to get information to display in the prompt, for example the version of a program or the current git status. To make sure starship doesn't hang while trying to execute these commands we set a time limit, if a command takes longer than this limit starship will stop the execution of the command and output the above warning, this is expected behaviour. This time limit is configurable using the [`command_timeout`key](../config/#prompt) so if you want you can increase the time limit. You can also follow the debugging steps below to see which command is being slow and see if you can optimise it. Finally you can set the `STARSHIP_LOG` env var to `error` to hide these warnings.
 
 ## Tôi thấy các biểu tượng tôi không hiểu hoặc không mong muốn, chúng có nghĩa là gì?
 
@@ -69,32 +69,32 @@ Nếu bạn thấy các biểu tượng bạn không biết, bạn có thể s�
 You can enable the debug logs by using the `STARSHIP_LOG` env var. These logs can be very verbose so it is often useful to use the `module` command if you are trying to debug a particular module, for example, if you are trying to debug the `rust` module you could run the following command to get the trace logs and output from the module.
 
 ```sh
-env STARHIP_LOG=trace starship module rust
+env STARSHIP_LOG=trace starship module rust
 ```
 
-If starship is being slow you can try using the `timings` command to see if there is a particular module or command that to blame.
+If starship is being slow you can try using the `timings` command to see if there is a particular module or command that is to blame.
 
 ```sh
-env STARHIP_LOG=trace starship timings
+env STARSHIP_LOG=trace starship timings
 ```
 
 This will output the trace log and a breakdown of all modules that either took more than 1ms to execute or produced some output.
 
-Finally if you find a bug you can use the `bug-report` command to create a Github issue.
+Finally if you find a bug you can use the `bug-report` command to create a GitHub issue.
 
 ```sh
 starship bug-report
 ```
 
-## Tại sao tôi không tình thấy một kí hiệu glyph trong prompt?
+## Tại sao tôi không thấy một biểu tượng glyph trong dấu nhắc lệnh của tôi?
 
-Đa số nguyên nhân phổ biến của việc này là cấu hình hệ thống sai. Một số bản phân phối Linux đặc biệt không có hỗ trợ phông chữ ngay lập tức. Bạn cần chắc chắn rằng:
+Đa số lí do phổ biến là do cái này mất cấu hình hệ thống. Một số bản phân phối Linux cụ thể không đi kèm việ hõ trợ font out-of-the-box. Bạn cần chắc chắn rằng:
 
 - Mã ngôn ngữ của bạn được thiết lập là một giá trị UTF-8, giống như `de_DE.UTF-8` or `ja_JP.UTF-8`. Nếu `LO_ALL` không phải là một giá trị UTF-8, [ bạn sẽ cần thay đổi nó](https://www.tecmint.com/set-system-locales-in-linux/).
 - Bạn đã cài đặt phông chữ biểu tượng cảm xúc. Đa số hệ thống đi kèm với một phông biểu tượng cảm xúc mặc định, nhưng một vài (đáng chú ý là Arch Linux) thì không. Bạn có thể thường cài đặt thông qua một trình quản lí gói hệ thống của bạn--[noto emoji](https://www.google.com/get/noto/help/emoji/) là một lựa chọn phổ biến.
 - Bạn đang sử dụng một [Nerd Font](https://www.nerdfonts.com/).
 
-Để kiểm tra hệ thống của bạn, chạy các câu lệnh sau trong một terminal:
+Để kiểm tra hệ thống của bạn, chạy các câu lệnh bên dưới trong terminal:
 
 ```sh
 echo -e "\xf0\x9f\x90\x8d"
@@ -103,9 +103,9 @@ echo -e "\xee\x82\xa0"
 
 Dòng đầu tiên nên sinh ra một [snake emoji](https://emojipedia.org/snake/), trong khi dòng thứ hai nên sinh ra một [powerline branch symbol (e0a0)](https://github.com/ryanoasis/powerline-extra-symbols#glyphs).
 
-Nếu một trong hai biểu tượng không hiển thị chính xác, hệ thống của bạn vẫn bị cấu hình sai. Thật không may, việc lấy đúng cấu hình phông chữ đôi khi rất khó. Những người dùng trên Discord có thể giúp đỡ. Nếu cả hai kí hiệu hiển thị đúng, nhưng bạn vẫn không thấy chúng trong starship, [nộp một báo cáo lỗi!](https://github.com/starship/starship/issues/new/choose)
+Nếu biểu tượng không hiển thị đúng, hệ thống của bạn vẫn cấu hình sai. Thật không may, lấy cấu hình font đúng đôi khi khó khăn. Người dùng trên Discord có thể có giúp đỡ được. Nếu các biểu tượng hiển thị đúng, nhưng bạn vẫn không thấy chúng trong starship, [nộp một báo cáo lỗi](https://github.com/starship/starship/issues/new/choose)
 
-## Làm cách nào để tôi gỡ cài đặt Starship?
+## Là thế nào để tôi gỡ cài đặt Starship?
 
 Starship thì dễ dàng gỡ cài đặt như cài đặt ngay từ đầu.
 
@@ -118,5 +118,13 @@ If Starship was installed using the install script, the following command will d
 
 ```sh
 # Locate and delete the starship binary
-sh -c 'rm "$(which starship)"'
+sh -c 'rm "$(command -v 'starship')"'
 ```
+
+## How do I install Starship without `sudo`?
+
+The shell install script (`https://starship.rs/install.sh`) only attempts to use `sudo` if the target installation directory is not writable by the current user. The default installation directory is the value of the `$BIN_DIR` environment variable or `/usr/local/bin` if `$BIN_DIR` is not set. If you instead set the installation directory to one that is writable by your user, you should be able to install starship without `sudo`. For example, `curl -sS https://starship.rs/install.sh | sh -s -- -b ~/.local/bin` uses the `-b` command line option of the install script to set the installation directory to `~/.local/bin`.
+
+For a non-interactive installation of Starship, don't forget to add the `-y` option to skip the confirmation. Check the source of the installation script for a list of all supported installation options.
+
+When using a package manager, see the documentation for your package manager about installing with or without `sudo`.

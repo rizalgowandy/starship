@@ -1,11 +1,11 @@
-# 🚀 Installation avancée
+# Installation avancée
 
 Pour installer starship, vous devez faire deux choses:
 
 1. Installez le binaire **starship** sur votre ordinateur
 1. Dire à votre shell d'utiliser le binaire de starship comme invite en modifiant ses scripts d'initialisation
 
-Pour la plupart des utilisateurs, les instructions sur [la page principale](/guide/#🚀-installation) fonctionneront bien. Cependant, pour certaines plateformes plus spécialisées, des instructions différentes sont nécessaires.
+For most users, the instructions on [the main page](../guide/#🚀-installation) will work great. Cependant, pour certaines plateformes plus spécialisées, des instructions différentes sont nécessaires.
 
 Il y a tellement de plates-formes, qu'il aurait été déraisonnable de les faire apparaître dans le README principal, voici donc quelques instructions d'installation supplémentaires pour celles-ci, écrites par la communauté. La vôtre n'est pas là ? S'il vous plaît, ajoutez-la ici pour les suivants !
 
@@ -32,20 +32,20 @@ pkg install getconf
 ### Installation
 
 ```sh
-sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --bin-dir /data/data/com.termux/files/usr/bin
+curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
 ```
 
 ## [Funtoo Linux](https://www.funtoo.org/Welcome)
 
 ### Installation
 
-On Funtoo Linux, starship can be installed from [core-kit](https://github.com/funtoo/core-kit/tree/1.4-release/app-shells/starship) via Portage:
+Sur Funtoo Linux, starship peut être installé à partir de [core-kit](https://github.com/funtoo/core-kit/tree/1.4-release/app-shells/starship) via Portage:
 
 ```sh
 emerge app-shells/starship
 ```
 
-## [Nix](https://nixos.wiki/wiki/Nix)
+## [Nix](https://wiki.nixos.org/wiki/Nix)
 
 ### Obtention du binaire
 
@@ -63,7 +63,6 @@ Activez le module `programs.starship` dans votre fichier `home.nix`, et ajoutez 
 {
   programs.starship = {
     enable = true;
-    enableZshIntegration = true;
     # Configuration écrite dans ~/.config/starship.toml
     settings = {
       # add_newline = false;

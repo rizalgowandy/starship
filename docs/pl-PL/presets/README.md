@@ -2,535 +2,76 @@
 
 Poniżej zamieszczono zestaw gotowych konfiguracji Starship stworzonych przez społeczność. Jeżeli chcesz zamieścić własną konfigurację, [złóż PR](https://github.com/starship/starship/edit/master/docs/presets/README.md) z modyfikacją tego pliku! 😊
 
-## Symbole Nerd Font
+Aby uzyskać szczegółowe informacje na temat użytkowania ustawień, po prostu kliknij na obraz.
 
-Poniższa konfiguracja nie zmienia nic poza znaczkami użytymi do oznaczenia poszczególnych modułów. Jeżeli nie jesteś fanem emoji, to może ci się spodobać!
+## [Symbole Nerd Font](./nerd-font.md)
 
-![Screenshot of Nerd Font Symbols preset](/presets/nerd-font-symbols.png)
+Ten zestaw ustawień zmienia symbole dla każdego modułu tak, by wykorzystywały symbole czcionki Nerd Font.
 
-### Wymagania wstępne
+[![Zrzut ekranu ustawień symboli czcionki Nerd Font](/presets/img/nerd-font-symbols.png "Kliknij, aby wyświetlić ustawienia symboli Nerd Font")](./nerd-font)
 
-- Czcionka [Nerd Font](https://www.nerdfonts.com/) zainstalowana i ustawiona w twoim terminalu (w przykładzie użyto Fira Code Nerd Font)
+## [No Nerd Fonts](./no-nerd-font.md)
 
-### Konfiguracja
+To ustawienie zmienia symbole dla kilku modułów, tak aby żadne symbole Nerd Font nie były używane w wierszu poleceń.
 
-```toml
-[aws]
-symbol = "  "
+::: porada
 
-[conda]
-symbol = " "
+To ustawienie stanie się domyślnym ustawieniem [w przyszłej wersji starship](https://github.com/starship/starship/pull/3544).
 
-[dart]
-symbol = " "
+:::
 
-[directory]
-read_only = " "
+[Kliknij, aby wyświetlić ustawienia No Nerd Font](./no-nerd-font)
 
-[docker_context]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[git_branch]
-symbol = " "
-
-[golang]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[memory_usage]
-symbol = " "
-
-[nim]
-symbol = " "
-
-[nix_shell]
-symbol = " "
-
-[package]
-symbol = " "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[python]
-symbol = " "
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = " "
-
-[scala]
-symbol = " "
-
-[shlvl]
-symbol = " "
-
-[swift]
-symbol = "ﯣ "
-```
-
-## Moduły w nawiasach kwadratowych
+## [Moduły w nawiasach kwadratowych](./bracketed-segments.md)
 
 Ta konfiguracja zmienia format wyświetlania wbudowanych modułów - zamiast domyślnych wyrazów ("via", "on", itp.) są wypisywane w nawiasach kwadratowych.
 
-Przed:
+[![Zrzut ekranu ustawień "Moduły w nawiasach kwadratowych"](/presets/img/bracketed-segments.png "Kliknij, aby wyświetlić ustawienia "Moduły w nawiasach kwadratowych"")](./bracketed-segments)
 
-![Screenshot of default Starship configuration](/presets/bracketed-segments-before.png)
+## [Symbole "plain text"](./plain-text.md)
 
-Po:
+Ten zestaw ustawień zmienia symbole w zwykły tekst dla każdego modułu. Świetne, jeśli nie masz dostępu do Unicode.
 
-![Screenshot of Bracketed Segments preset](/presets/bracketed-segments-after.png)
+[![Zrzut ekranu ustawień Plain Text Symbols](/presets/img/plain-text-symbols.png "Kliknij, aby wyświetlić ustawienia symboli zwykłego tekstu")](./plain-text)
 
-### Konfiguracja
+## [No Runtime Versions](./no-runtimes.md)
 
-```toml
-[aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+Ten zestaw ustawień ukrywa wersję środowiska wykonawczego.  Jeśli pracujesz w kontenerach lub wirtualnych środowiskach, to jest to dla Ciebie!
 
-[cmake]
-format = '\[[$symbol($version)]($style)\]'
+[![Zrzut ekranu No Runtime Versions](/presets/img/no-runtime-versions.png "Kliknij, aby wyświetlić ustawienia No Runtime Versions")](./no-runtimes)
 
-[cmd_duration]
-format = '\[[⏱ $duration ]($style)\]'
+## [No Empty Icons](./no-empty-icons.md)
 
-[cobol]
-format = '\[[$symbol($version)]($style)\]'
+Ten zestaw ustawień nie wyświetla ikon, jeśli zestaw narzędzi nie został znaleziony.
 
-[conda]
-format = '\[[$symbol$environment]($style)\]'
+[![Zrzut ekranu ustawień No Empty Icons](/presets/img/no-empty-icons.png "Kliknij, aby wyświetlić ustawienia No Runtime Versions")](./no-empty-icons.md)
 
-[crystal]
-format = '\[[$symbol($version)]($style)\]'
+## [Wiersz poleceń "Pure"](./pure-preset.md)
 
-[dart]
-format = '\[[$symbol($version)]($style)\]'
+Ten zestaw ustawień naśladuje wygląd i zachowanie  [Pure](https://github.com/sindresorhus/pure).
 
-[deno]
-format = '\[[$symbol($version)]($style)\]'
+[![Zrzut ekranu ustawień Pure](/presets/img/pure-preset.png "Kliknij, aby wyświetlić ustawienia wiersza Pure")](./pure-preset)
 
-[docker_context]
-format = '\[[$symbol$context]($style)\]'
+## [Pastel Powerline](./pastel-powerline.md)
 
-[dotnet]
-format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
+Ten zestaw ustawień jest inspirowany  [M365Princess](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/M365Princess.omp.json). Pokazuje ono również, jak działa zastępowanie ścieżek w starship.
 
-[elixir]
-format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
+[![Zrzut ekranu ustawień Pastel Powerline](/presets/img/pastel-powerline.png "Kliknij, aby wyświetlić ustawienia wiersza Pure")](./pastel-powerline)
 
-[elm]
-format = '\[[$symbol($version)]($style)\]'
+## [Tokyo Night](./tokyo-night.md)
 
-[erlang]
-format = '\[[$symbol($version)]($style)\]'
+Ten zestaw ustawień jest inspirowany [tokyo-night-vscode-theme](https://github.com/enkia/tokyo-night-vscode-theme).
 
-[gcloud]
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+[![Zrzut ekranu ustawień Tokio Night](/presets/img/tokyo-night.png "Kliknij, aby wyświetlić ustawienia Tokio Night")](./tokyo-night)
 
-[git_branch]
-format = '\[[$symbol$branch]($style)\]'
+## [Gruvbox Rainbow](./gruvbox-rainbow.md)
 
-[git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+Zestaw mocno inspirowany przez [Pastel Powerline](./pastel-powerline.md) i [Tokyo Night](./tokyo-night.md).
 
-[golang]
-format = '\[[$symbol($version)]($style)\]'
+[![Zrzut ekranu ustawień Gruvbox Rainbow](/presets/img/gruvbox-rainbow.png "Kliknij, aby wyświetlić ustawienia Gruvbox Rainbow")](./gruvbox-rainbow)
 
-[helm]
-format = '\[[$symbol($version)]($style)\]'
+## [Jetpack](./jetpack.md)
 
-[hg_branch]
-format = '\[[$symbol$branch]($style)\]'
+This is a pseudo minimalist preset inspired by the [geometry](https://github.com/geometry-zsh/geometry) and [spaceship](https://github.com/spaceship-prompt/spaceship-prompt) prompts.
 
-[java]
-format = '\[[$symbol($version)]($style)\]'
-
-[julia]
-format = '\[[$symbol($version)]($style)\]'
-
-[kotlin]
-format = '\[[$symbol($version)]($style)\]'
-
-[kubernetes]
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
-
-[lua]
-format = '\[[$symbol($version)]($style)\]'
-
-[memory_usage]
-format = '\[$symbol[$ram( | $swap)]($style)\]'
-
-[nim]
-format = '\[[$symbol($version)]($style)\]'
-
-[nix_shell]
-format = '\[[$symbol$state( \($name\))]($style)\]'
-
-[nodejs]
-format = '\[[$symbol($version)]($style)\]'
-
-[ocaml]
-format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
-
-[openstack]
-format = '\[[$symbol$cloud(\($project\))]($style)\]'
-
-[package]
-format = '\[[$symbol$version]($style)\]'
-
-[perl]
-format = '\[[$symbol($version)]($style)\]'
-
-[php]
-format = '\[[$symbol($version)]($style)\]'
-
-[pulumi]
-format = '\[[$symbol$stack]($style)\]'
-
-[purescript]
-format = '\[[$symbol($version)]($style)\]'
-
-[python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-
-[red]
-format = '\[[$symbol($version)]($style)\]'
-
-[ruby]
-format = '\[[$symbol($version)]($style)\]'
-
-[rust]
-format = '\[[$symbol($version)]($style)\]'
-
-[scala]
-format = '\[[$symbol($version)]($style)\]'
-
-[sudo]
-format = '\[[as $symbol]\]
-
-[swift]
-format = '\[[$symbol($version)]($style)\]'
-
-[terraform]
-format = '\[[$symbol$workspace]($style)\]'
-
-[time]
-format = '\[[$time]($style)\]'
-
-[username]
-format = '\[[$user]($style)\]'
-
-[vagrant]
-format = '\[[$symbol($version)]($style)\]'
-
-[vlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[zig]
-format = '\[[$symbol($version)]($style)\]'
-```
-
-## Symbole "plain text"
-
-This preset changes the symbols into plain text. If your terminal/font could not render the NerdFonts/emojis, maybe you could try this preset!
-
-Before (default setting with Fixedsys font):
-
-![Screenshot of default Starship configuration with Fixedsys font](/presets/plain-text-symbols-before.png)
-
-After (Plain Text Symbols):
-
-![Screenshot of Plain Text Symbols preset](/presets/plain-text-symbols-after.png)
-
-### Konfiguracja
-
-```toml
-[character]
-success_symbol = "[>](bold green)"
-error_symbol = "[x](bold red)"
-vicmd_symbol = "[<](bold green)"
-
-[git_commit]
-tag_symbol = " tag "
-
-[git_status]
-ahead = ">"
-behind = "<"
-diverged = "<>"
-renamed = "r"
-deleted = "x"
-
-[aws]
-symbol = "aws "
-
-[cobol]
-symbol = "cobol "
-
-[conda]
-symbol = "conda "
-
-[crystal]
-symbol = "cr "
-
-[cmake]
-symbol = "cmake "
-
-[dart]
-symbol = "dart "
-
-[deno]
-symbol = "deno "
-
-[dotnet]
-symbol = ".NET "
-
-[directory]
-read_only = " ro"
-
-[docker_context]
-symbol = "docker "
-
-[elixir]
-symbol = "exs "
-
-[elm]
-symbol = "elm "
-
-[git_branch]
-symbol = "git "
-
-[golang]
-symbol = "go "
-
-[hg_branch]
-symbol = "hg "
-
-[java]
-symbol = "java "
-
-[julia]
-symbol = "jl "
-
-[kotlin]
-symbol = "kt "
-
-[nodejs]
-symbol = "nodejs "
-
-[memory_usage]
-symbol = "memory "
-
-[nim]
-symbol = "nim "
-
-[nix_shell]
-symbol = "nix "
-
-[ocaml]
-symbol = "ml "
-
-[package]
-symbol = "pkg "
-
-[perl]
-symbol = "pl "
-
-[php]
-symbol = "php "
-
-[pulumi]
-symbol = "pulumi "
-
-[purescript]
-symbol = "purs "
-
-[python]
-symbol = "py "
-
-[ruby]
-symbol = "rb "
-
-[rust]
-symbol = "rs "
-
-[scala]
-symbol = "scala "
-
-[sudo]
-symbol = "sudo "
-
-[swift]
-symbol = "swift "
-```
-
-## Hide Runtime Versions
-
-This preset hides the version of language runtimes. If you work in containers or virtualized environments, this one is for you!
-
-![Screenshot of Hide Runtime Versions preset](/presets/hide-runtime-versions.png)
-
-### Konfiguracja
-
-```toml
-[cmake]
-format = "via [$symbol]($style)"
-
-[cobol]
-format = "via [$symbol]($style)"
-
-[crystal]
-format = "via [$symbol]($style)"
-
-[dart]
-format = "via [$symbol]($style)"
-
-[deno]
-format = "via [$symbol]($style)"
-
-[dotnet]
-format = "[$symbol(🎯 $tfm )]($style)"
-
-[elixir]
-format = 'via [$symbol]($style)'
-
-[elm]
-format = 'via [$symbol]($style)'
-
-[erlang]
-format = 'via [$symbol]($style)'
-
-[golang]
-format = 'via [$symbol]($style)'
-
-[helm]
-format = 'via [$symbol]($style)'
-
-[julia]
-format = 'via [$symbol]($style)'
-
-[kotlin]
-format = 'via [$symbol]($style)'
-
-[lua]
-format = 'via [$symbol]($style)'
-
-[nim]
-format = 'via [$symbol]($style)'
-
-[nodejs]
-format = 'via [$symbol]($style)'
-
-[ocaml]
-format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
-
-[perl]
-format = 'via [$symbol]($style)'
-
-[php]
-format = 'via [$symbol]($style)'
-
-[pulumi]
-format = 'via [$symbol$stack]($style)'
-
-[purescript]
-format = 'via [$symbol]($style)'
-
-[red]
-format = 'via [$symbol]($style)'
-
-[rlang]
-format = 'via [$symbol]($style)'
-
-[ruby]
-format = 'via [$symbol]($style)'
-
-[rust]
-format = 'via [$symbol]($style)'
-
-[swift]
-format = 'via [$symbol]($style)'
-
-[vagrant]
-format = 'via [$symbol]($style)'
-
-[vlang]
-format = 'via [$symbol]($style)'
-
-[zig]
-format = 'via [$symbol]($style)'
-```
-
-## Pure
-
-This preset emulates the look and behavior of [Pure](https://github.com/sindresorhus/pure).
-
-![Screenshot of Pure preset](/presets/pure-prompt.png)
-
-### Konfiguracja
-
-```toml
-format = """
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_state\
-$git_status\
-$cmd_duration\
-$line_break\
-$python\
-$character"""
-
-[directory]
-style = "blue"
-
-[character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vicmd_symbol = "[❮](green)"
-
-[git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
-
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
-
-[python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
-```
+[![Screenshot of Jetpack preset](/presets/img/jetpack.png "Click to view Jetpack preset")](./jetpack)
